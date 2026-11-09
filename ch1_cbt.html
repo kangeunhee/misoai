@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실전 CBT 모의고사 (40문항) | AI 프롬프트활용능력 2급</title>
+    <meta name="description" content="AI 프롬프트활용능력 2급 실전 CBT 모의고사 40문항, 60분 제한 시간 시험 시뮬레이터 및 자동 채점, 상세 해설 제공">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap'); body { font-family: 'Pretendard', sans-serif; }</style>
+</head>
+<body class="bg-[#FAF8F5] text-[#2D2A26] min-h-screen flex flex-col antialiased selection:bg-orange-200 selection:text-orange-900">
+
+    <!-- 상단 네비게이션 -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-[#EFECE6] sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2.5">
+                <span class="bg-orange-500 text-white text-xs font-bold px-2.5 py-1 rounded-md shadow-sm">KPC AI-POT</span>
+                <span class="font-bold text-[#2D2A26] text-lg tracking-tight">AI 프롬프트활용능력 2급</span>
+            </a>
+        <nav class="hidden md:flex space-x-6 text-sm font-medium text-[#6B655D]">
+                <a href="index.html" class="hover:text-orange-600 transition">홈</a>
+                <a href="ch1.html" class="text-orange-600 font-bold">Ch 1. AI기초</a>
+                <a href="ch2.html" class="hover:text-orange-600 transition">Ch 2. 생성AI</a>
+                <a href="ch3.html" class="hover:text-orange-600 transition">Ch 3. 프롬프트기초</a>
+                <a href="ch4.html" class="hover:text-orange-600 transition">Ch 4. 기술활용</a>
+                <a href="ch5.html" class="hover:text-orange-600 transition">Ch 5. 윤리/저작권</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 상단 CBT 상태 바 (타이머 & 제출 버튼) -->
+    <div class="bg-white border-b border-[#EFECE6] sticky top-[73px] z-40 shadow-sm py-3 px-6">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div>
+                <span class="text-xs font-bold text-orange-600 bg-orange-50 border border-orange-100 px-3 py-1 rounded-full">실전 모의고사</span>
+                <h1 class="text-lg font-extrabold text-[#2D2A26] mt-1 inline-block ml-2">AI 프롬프트활용능력 2급 CBT (총 40문항)</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div id="timer" class="bg-[#FAF8F5] border border-[#EFECE6] px-4 py-1.5 rounded-xl font-mono font-bold text-orange-600 text-sm">
+                    잔여 시간: 60:00
+                </div>
+                <button onclick="submitExam()" class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-xl text-sm font-semibold transition shadow-sm">
+                    답안 제출 및 채점
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CBT 메인 콘텐츠 -->
+    <main class="max-w-4xl mx-auto px-6 py-10 flex-1 space-y-8 w-full">
+        
+        <!-- 시험 안내 박스 -->
+        <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 shadow-sm space-y-2">
+            <h2 class="font-bold text-base text-[#2D2A26]">시험 응시 안내</h2>
+            <p class="text-sm text-[#7A7369] leading-relaxed">
+                본 시험은 실제 KPC AI-POT 2급 시험 기준(총 40문항, 60분, 100점 만점 중 70점 이상 합격)에 맞추어 구성되었습니다. 문제를 모두 풀고 우측 상단의 [답안 제출 및 채점] 버튼을 누르면 즉시 총점과 합격 여부, 그리고 문항별 상세 해설을 확인할 수 있습니다.
+            </p>
+        </div>
+
+        <!-- 성적 결과 영역 (제출 시 표시) -->
+        <div id="result-box" class="hidden bg-white border-2 border-orange-500 rounded-2xl p-6 shadow-md space-y-3">
+            <h2 class="text-xl font-extrabold text-[#2D2A26]">채점 결과 리포트</h2>
+            <div id="result-content" class="text-sm text-[#5C554B] space-y-1"></div>
+        </div>
+
+        <!-- 40문항 폼 -->
+        <form id="cbt-form" class="space-y-6">
+
+            <!-- [과목 1] 인공지능 기초 이론 (1~8) -->
+            <div class="border-b border-[#EFECE6] pb-4 mb-2">
+                <h3 class="text-lg font-bold text-orange-600">[과목 1] 인공지능 기초 이론 (문항 01 ~ 08)</h3>
+            </div>
+
+            <!-- Q1 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="1" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 01</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">인공지능의 역사에서 1950년대 앨런 튜링이 제안한 기계가 인간과 유사하게 대화할 수 있는지를 판별하는 테스트의 명칭은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q1" value="1" class="accent-orange-500"> <span>1. 튜링 테스트 (Turing Test)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q1" value="2" class="accent-orange-500"> <span>2. 퍼셉트론 테스트</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q1" value="3" class="accent-orange-500"> <span>3. 앨런 검증법</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q1" value="4" class="accent-orange-500"> <span>4. 폰 노이만 검정</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 튜링 테스트는 기계가 인간과 구별할 수 없는 수준의 대화를 나누는지를 판별하기 위한 기준입니다.
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="2" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 02</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">인공지능 분야에서 데이터의 특징을 스스로 학습하여 고차원의 추상적 표현을 찾아내는 다층 신경망 기반의 학습 기술은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q2" value="1" class="accent-orange-500"> <span>1. 규칙 기반 전문가 시스템</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q2" value="2" class="accent-orange-500"> <span>2. 딥러닝 (Deep Learning)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q2" value="3" class="accent-orange-500"> <span>3. 선형 회귀 분석</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q2" value="4" class="accent-orange-500"> <span>4. 키워드 매칭 검색</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 딥러닝은 여러 개의 은닉층을 가진 인공신경망을 활용해 방대한 데이터로부터 특징을 학습합니다.
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="3" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 03</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">인공지능 분류 모델의 성능 평가 지표 중, 모델이 '참(Positive)'이라고 예측한 것 중에서 실제 '참'인 비율을 뜻하는 지표는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q3" value="1" class="accent-orange-500"> <span>1. 재현율 (Recall)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q3" value="2" class="accent-orange-500"> <span>2. 정밀도 (Precision)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q3" value="3" class="accent-orange-500"> <span>3. 정확도 (Accuracy)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q3" value="4" class="accent-orange-500"> <span>4. 손실률 (Loss Rate)</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 정밀도는 모델이 양성이라고 예측한 전체 대상 중 실제 양성인 비율을 의미합니다.
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="4" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 04</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">실제 양성(Positive)인 데이터 전체 중에서 모델이 양성으로 올바르게 예측한 비율을 뜻하는 성능 평가 지표는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q4" value="1" class="accent-orange-500"> <span>1. 정밀도 (Precision)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q4" value="2" class="accent-orange-500"> <span>2. 재현율 (Recall)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q4" value="3" class="accent-orange-500"> <span>3. F1 스코어</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q4" value="4" class="accent-orange-500"> <span>4. 학습률 (Learning Rate)</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 재현율은 실제 참인 데이터 중 모델이 참이라고 맞춘 비율입니다.
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="5" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 05</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">인공지능 학습 방법 중, 정답(Label)이 지정되지 않은 방대한 데이터를 컴퓨터가 스스로 군집화하거나 패턴을 분석하도록 학습하는 방식은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q5" value="1" class="accent-orange-500"> <span>1. 지도 학습 (Supervised Learning)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q5" value="2" class="accent-orange-500"> <span>2. 비지도 학습 (Unsupervised Learning)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q5" value="3" class="accent-orange-500"> <span>3. 강화 학습 (Reinforcement Learning)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q5" value="4" class="accent-orange-500"> <span>4. 하이브리드 코딩</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 비지도 학습은 정답 레이블 없이 데이터 자체의 구조와 숨겨진 패턴을 찾아냅니다.
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="6" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 06</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">에이전트가 환경과 상호작용하며 얻는 보상(Reward)을 최대화하는 방향으로 최적의 행동 양식을 찾아내는 머신러닝 학습 기법은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q6" value="1" class="accent-orange-500"> <span>1. 강화 학습 (Reinforcement Learning)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q6" value="2" class="accent-orange-500"> <span>2. 지도 학습</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q6" value="3" class="accent-orange-500"> <span>3. 비지도 학습</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q6" value="4" class="accent-orange-500"> <span>4. 단층 퍼셉트론 학습</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 강화 학습은 시행착오를 거치며 보상을 극대화하는 방향으로 학습하는 알고리즘입니다.
+                </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="7" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 07</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">인공지능 모델 성능 평가에서 정밀도(Precision)와 재현율(Recall)의 조화 평균을 계산하여 모델의 균형 잡힌 성능을 나타내는 지표는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q7" value="1" class="accent-orange-500"> <span>1. F1 스코어 (F1-Score)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q7" value="2" class="accent-orange-500"> <span>2. 민감도 지수</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q7" value="3" class="accent-orange-500"> <span>3. 평균 제곱 오차</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q7" value="4" class="accent-orange-500"> <span>4. 베이지안 확률 값</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. F1 스코어는 정밀도와 재현율의 조화 평균을 구한 값입니다.
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="8" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 08</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">인공지능 역사에서 초기 규칙 기반 전문가 시스템의 한계를 극복하고 연결주의를 바탕으로 인간의 뇌 신경망을 모방하여 가중치를 학습하는 초기 모형은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q8" value="1" class="accent-orange-500"> <span>1. 퍼셉트론 (Perceptron)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q8" value="2" class="accent-orange-500"> <span>2. 폰 노이만 아키텍처</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q8" value="3" class="accent-orange-500"> <span>3. 관계형 데이터베이스</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q8" value="4" class="accent-orange-500"> <span>4. 결정 트리</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 퍼셉트론은 인공신경망의 기본 단위로 가중치를 학습하는 기초 모형입니다.
+                </div>
+            </div>
+
+            <!-- [과목 2] 생성 AI 기초 이론 (9~16) -->
+            <div class="border-b border-[#EFECE6] pb-4 mb-2 pt-6">
+                <h3 class="text-lg font-bold text-orange-600">[과목 2] 생성 AI 기초 이론 (문항 09 ~ 16)</h3>
+            </div>
+
+            <!-- Q9 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="9" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 09</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">대규모 언어 모델(LLM)이 문장을 생성할 때 사용하는 가장 근본적인 통계적·확률적 작동 원리로 가장 적절한 것은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q9" value="1" class="accent-orange-500"> <span>1. 데이터베이스에서 완전 일치하는 문장을 키워드 검색으로 그대로 가져온다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q9" value="2" class="accent-orange-500"> <span>2. 문맥을 바탕으로 다음에 올 가장 확률이 높은 토큰을 연속적으로 예측한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q9" value="3" class="accent-orange-500"> <span>3. 이진 논리 회로를 통해 입력문의 참과 거짓을 완벽하게 증명한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q9" value="4" class="accent-orange-500"> <span>4. 문장의 전체 길이를 고정된 바이트로 잘라 기계적 규칙에 따라 결합한다.</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 생성 AI와 LLM은 확률 모델을 기반으로 다음에 올 가장 높은 확률의 토큰을 예측합니다.
+                </div>
+            </div>
+
+            <!-- Q10 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="10" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 10</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI 모델의 파라미터 중, 출력 결과의 무작위성 및 창의성 수치를 제어하여 답변의 다양성을 조절하는 설정값의 명칭은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q10" value="1" class="accent-orange-500"> <span>1. 온도 (Temperature)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q10" value="2" class="accent-orange-500"> <span>2. 학습률 (Learning Rate)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q10" value="3" class="accent-orange-500"> <span>3. 에포크 (Epoch)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q10" value="4" class="accent-orange-500"> <span>4. 배치 사이즈 (Batch Size)</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. Temperature 값이 높을수록 다양하고 창의적인 답변이 생성됩니다.
+                </div>
+            </div>
+
+            <!-- Q11 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="11" data-ans="3">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 11</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">챗GPT(ChatGPT) 등 현대 LLM의 근간이 되는 딥러닝 아키텍처로서, 순차적 처리의 한계를 극복하고 어텐션 메커니즘을 통해 병렬 연산을 극대화한 구조는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q11" value="1" class="accent-orange-500"> <span>1. CNN (합성곱 신경망)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q11" value="2" class="accent-orange-500"> <span>2. RNN (순환 신경망)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q11" value="3" class="accent-orange-500"> <span>3. Transformer (트랜스포머 아키텍처)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q11" value="4" class="accent-orange-500"> <span>4. 단층 퍼셉트론</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 3번. 주요 생성 AI는 어텐션 메커니즘 기반의 Transformer 아키텍처를 사용합니다.
+                </div>
+            </div>
+
+            <!-- Q12 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="12" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 12</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI가 텍스트를 처리할 때 문장을 일정한 의미 단위나 형태소, 혹은 글자 조각으로 쪼개는 전처리 단계를 가리키는 용어는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q12" value="1" class="accent-orange-500"> <span>1. 토큰화 (Tokenization)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q12" value="2" class="accent-orange-500"> <span>2. 벡터화 (Vectorization)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q12" value="3" class="accent-orange-500"> <span>3. 정규화 (Normalization)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q12" value="4" class="accent-orange-500"> <span>4. 압축 인코딩</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 토큰화는 입력 텍스트를 모델이 인식할 수 있는 조각 단위로 분해합니다.
+                </div>
+            </div>
+
+            <!-- Q13 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="13" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 13</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">대규모 언어 모델을 구축할 때, 방대한 비정형 텍스트 데이터를 활용하여 언어의 기본적인 구조와 문법, 지식을 비지도 방식으로 학습하는 초기 단계는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q13" value="1" class="accent-orange-500"> <span>1. 사전 학습 (Pre-training)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q13" value="2" class="accent-orange-500"> <span>2. 미세 조정 (Fine-tuning)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q13" value="3" class="accent-orange-500"> <span>3. 강화 학습 (RLHF)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q13" value="4" class="accent-orange-500"> <span>4. 양자화 압축</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 사전 학습(Pre-training)은 언어의 기반 지식을 비지도 방식으로 익히는 초기 단계입니다.
+                </div>
+            </div>
+
+            <!-- Q14 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="14" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 14</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">사전 학습된 모델에 특정 도메인 데이터나 목적에 맞는 데이터를 추가로 학습시켜 성능을 최적화하는 과정을 뜻하는 용어는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q14" value="1" class="accent-orange-500"> <span>1. 제로샷 러닝</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q14" value="2" class="accent-orange-500"> <span>2. 미세 조정 (Fine-tuning)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q14" value="3" class="accent-orange-500"> <span>3. 토큰화 변환</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q14" value="4" class="accent-orange-500"> <span>4. 역전파 최적화</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 미세 조정은 범용 모델을 특정 목적에 맞게 추가 학습시키는 과정입니다.
+                </div>
+            </div>
+
+            <!-- Q15 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="15" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 15</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">챗GPT와 같은 대화형 AI가 인간의 선호도와 윤리적 기준에 부합하도록 피드백을 반영하여 최적화하는 학습 기법의 영문 약어는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q15" value="1" class="accent-orange-500"> <span>1. RAG</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q15" value="2" class="accent-orange-500"> <span>2. RLHF</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q15" value="3" class="accent-orange-500"> <span>3. CNN</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q15" value="4" class="accent-orange-500"> <span>4. API</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. RLHF는 인간의 피드백 기반 강화 학습으로 AI의 안전성을 높입니다.
+                </div>
+            </div>
+
+            <!-- Q16 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="16" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 16</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI 모델이 한 번에 처리할 수 있는 최대 입력 및 출력 토큰의 총량을 의미하는 전문 용어는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q16" value="1" class="accent-orange-500"> <span>1. 컨텍스트 윈도우 (Context Window)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q16" value="2" class="accent-orange-500"> <span>2. 토큰 레이턴시</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q16" value="3" class="accent-orange-500"> <span>3. 메모리 버퍼 사이즈</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q16" value="4" class="accent-orange-500"> <span>4. 가중치 풀 (Weight Pool)</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 컨텍스트 윈도우는 모델이 기억하고 처리하는 최대 토큰 범위입니다.
+                </div>
+            </div>
+
+            <!-- [과목 3] 프롬프트 엔지니어링 기술 기초 (17~24) -->
+            <div class="border-b border-[#EFECE6] pb-4 mb-2 pt-6">
+                <h3 class="text-lg font-bold text-orange-600">[과목 3] 프롬프트 엔지니어링 기술 기초 (문항 17 ~ 24)</h3>
+            </div>
+
+            <!-- Q17 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="17" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 17</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">다음 중 효과적인 프롬프트 작성 원칙으로 가장 거리가 먼 것은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q17" value="1" class="accent-orange-500"> <span>1. AI에게 명확한 역할(Role)이나 페르소나를 부여하여 답변의 관점을 좁힌다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q17" value="2" class="accent-orange-500"> <span>2. 가능한 한 추상적이고 포괄적인 표현을 사용하여 AI가 스스로 자유롭게 해석하도록 유도한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q17" value="3" class="accent-orange-500"> <span>3. 출력 형식(예: 마크다운 표, 글머리 기호, 글자 수 제한 등)을 구체적으로 명시한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q17" value="4" class="accent-orange-500"> <span>4. 작업 수행에 필요한 구체적인 맥락(Context)이나 예시를 함께 제공한다.</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 추상적이고 포괄적인 표현은 환각 현상을 유발하므로 명확한 지시어를 사용해야 합니다.
+                </div>
+            </div>
+
+            <!-- Q18 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="18" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 18</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">프롬프트 엔지니어링 기법 중, AI에게 별도의 입출력 예시를 제공하지 않고 곧바로 작업 지시문이나 질문을 입력하여 답변을 유도하는 방식은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q18" value="1" class="accent-orange-500"> <span>1. 제로샷 프롬프팅 (Zero-shot Prompting)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q18" value="2" class="accent-orange-500"> <span>2. 퓨샷 프롬프팅 (Few-shot Prompting)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q18" value="3" class="accent-orange-500"> <span>3. 사고 척도법 (Chain-of-Thought)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q18" value="4" class="accent-orange-500"> <span>4. 파인 튜닝</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 사전 예시 없이 바로 명령하는 방식이 제로샷(Zero-shot)입니다.
+                </div>
+            </div>
+
+            <!-- Q19 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="19" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 19</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">프롬프트 작성 시 하나 이상의 정답 예시나 입출력 패턴 샘플을 함께 입력하여 AI가 의도된 규격에 맞추어 출력하도록 유도하는 기법은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q19" value="1" class="accent-orange-500"> <span>1. 제로샷 프롬프팅</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q19" value="2" class="accent-orange-500"> <span>2. 퓨샷 프롬프팅 (Few-shot Prompting)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q19" value="3" class="accent-orange-500"> <span>3. 자기 일관성 기법</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q19" value="4" class="accent-orange-500"> <span>4. 역프롬프팅</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 예시를 제공하여 정교한 출력을 유도하는 기법을 퓨샷(Few-shot)이라고 합니다.
+                </div>
+            </div>
+
+            <!-- Q20 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="20" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 20</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">복잡한 논리나 수치 계산 문제에서 AI에게 "단계별로 차근차근 생각해 봐"라는 지시어를 추가하여 중간 논리 추론 과정을 거치도록 유도하는 프롬프트 기법은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q20" value="1" class="accent-orange-500"> <span>1. 체인 오브 쏘트 (Chain-of-Thought, CoT)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q20" value="2" class="accent-orange-500"> <span>2. 페르소나 프롬프팅</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q20" value="3" class="accent-orange-500"> <span>3. 네거티브 프롬프팅</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q20" value="4" class="accent-orange-500"> <span>4. 포맷팅 지시법</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. CoT 기법은 중간 생각 단계를 밟도록 유도하여 추론 정확도를 높입니다.
+                </div>
+            </div>
+
+            <!-- Q21 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="21" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 21</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">대화 전체의 기본적인 지침이나 규칙, AI의 성격과 역할을 사전 정의하여 대화 내내 유지되도록 설정하는 프롬프트 영역은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q21" value="1" class="accent-orange-500"> <span>1. 유저 프롬프트 (User Prompt)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q21" value="2" class="accent-orange-500"> <span>2. 시스템 프롬프트 (System Prompt)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q21" value="3" class="accent-orange-500"> <span>3. 어시스턴트 프롬프트</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q21" value="4" class="accent-orange-500"> <span>4. 컨텍스트 프롬프트</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 시스템 프롬프트는 모델의 최상위 가이드라인 및 페르소나를 결정합니다.
+                </div>
+            </div>
+
+            <!-- Q22 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="22" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 22</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">프롬프트 지시문 작성 시 "이것을 하지 마라"라는 금지형 표현보다 "이것을 해라"라는 긍정형 지시문이 추천되는 이유로 알맞은 것은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q22" value="1" class="accent-orange-500"> <span>1. AI는 부정문의 의미나 범위를 제대로 인식하지 못하고 금지 단어 자체에 어텐션이 쏠릴 수 있기 때문에</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q22" value="2" class="accent-orange-500"> <span>2. 부정문을 쓰면 토크나이저 연산 속도가 감소하므로</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q22" value="3" class="accent-orange-500"> <span>3. 부정문은 무조건 시스템 오류를 일으키므로</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q22" value="4" class="accent-orange-500"> <span>4. 부정문을 쓰면 생성 AI의 토큰 한도가 줄어들기 때문에</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. LLM은 금지 키워드 자체에 집중할 위험이 있어 명확한 목표 행위(긍정문)가 효과적입니다.
+                </div>
+            </div>
+
+            <!-- Q23 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="23" data-ans="4">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 23</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">프롬프트 엔지니어링 시 지시문과 본문 데이터를 명확히 분리하기 위해 구문 구분 기호(Delimiter)로 흔히 활용되지 않는 기호는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q23" value="1" class="accent-orange-500"> <span>1. ``` (Triple backticks)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q23" value="2" class="accent-orange-500"> <span>2. """ (Triple quotes)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q23" value="3" class="accent-orange-500"> <span>3. ### (Triple hashes)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q23" value="4" class="accent-orange-500"> <span>4. && (Double ampersand)</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 4번. 구분 기호로는 삼중 백틱, 따옴표, 샵 기호 등이 주로 사용됩니다.
+                </div>
+            </div>
+
+            <!-- Q24 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="24" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 24</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">퓨샷(Few-shot) 프롬프팅 작성 시 입력하는 예시(Example)의 개수로 가장 보편적이고 효율적인 범위는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q24" value="1" class="accent-orange-500"> <span>1. 1개 ~ 5개 내외</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q24" value="2" class="accent-orange-500"> <span>2. 100개 이상</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q24" value="3" class="accent-orange-500"> <span>3. 50개 ~ 80개</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q24" value="4" class="accent-orange-500"> <span>4. 0개 필수</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 퓨샷 프롬프팅은 통상 1~5개 내외의 예시로도 높은 패턴 인식률을 발휘합니다.
+                </div>
+            </div>
+
+            <!-- [과목 4] 프롬프트 엔지니어링 기술 활용 (25~32) -->
+            <div class="border-b border-[#EFECE6] pb-4 mb-2 pt-6">
+                <h3 class="text-lg font-bold text-orange-600">[과목 4] 프롬프트 엔지니어링 기술 활용 (문항 25 ~ 32)</h3>
+            </div>
+
+            <!-- Q25 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="25" data-ans="4">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 25</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI를 활용하여 비즈니스 이메일이나 기획서 초안을 작성할 때, 가장 먼저 확보해야 할 필수 프롬프트 요소가 아닌 것은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q25" value="1" class="accent-orange-500"> <span>1. 문서의 목적 및 타깃 독자 (Audience)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q25" value="2" class="accent-orange-500"> <span>2. 반드시 포함되어야 할 핵심 개요나 데이터 포인트</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q25" value="3" class="accent-orange-500"> <span>3. 작성 결과물의 분량 및 출력 포맷 지정</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q25" value="4" class="accent-orange-500"> <span>4. 인공지능의 내부 학습용 가중치 소스 코드 파일 경로</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 4번. 사용자는 내부 소스 코드 경로를 제공할 필요가 없습니다.
+                </div>
+            </div>
+
+            <!-- Q26 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="26" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 26</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">이미지 생성 AI(예: Midjourney, DALL-E)의 프롬프트 작성 구조에서 화풍이나 매체 종류를 지정하는 요소로 가장 적절한 것은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q26" value="1" class="accent-orange-500"> <span>1. 유화, 수채화, 3D 렌더링, 시네마틱 사진 스타일</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q26" value="2" class="accent-orange-500"> <span>2. CPU 코어 수 및 그래픽카드 드라이버 버전</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q26" value="3" class="accent-orange-500"> <span>3. 인터넷 연결 프로토콜 (HTTP/HTTPS)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q26" value="4" class="accent-orange-500"> <span>4. 데이터베이스 테이블 조인 조건</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 이미지 생성 시 유화, 3D 등 매체와 화풍을 지정할 수 있습니다.
+                </div>
+            </div>
+
+            <!-- Q27 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="27" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 27</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">장문의 비즈니스 보고서나 회의록을 생성 AI에 입력하여 핵심 요약본을 도출할 때 가장 효과적인 프롬프트 지시 전략은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q27" value="1" class="accent-orange-500"> <span>1. "아무 말이나 길게 늘여서 작성해 줘."</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q27" value="2" class="accent-orange-500"> <span>2. "다음 회의록을 읽고 핵심 결론과 실행 과제(Action Item)를 3가지 불렛 포인트로 요약해 줘."</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q27" value="3" class="accent-orange-500"> <span>3. "영어 단어 하나로만 대답해."</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q27" value="4" class="accent-orange-500"> <span>4. "모든 문장을 거꾸로 뒤집어서 출력해 줘."</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 핵심 결론과 개수(불렛 포인트 3가지)를 지정하면 가독성 높은 요약을 얻습니다.
+                </div>
+            </div>
+
+            <!-- Q28 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="28" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 28</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI를 활용해 엑셀 표 데이터(CSV)를 분석하고 요약 통계와 트렌드를 파악하고자 할 때 가장 알맞은 사전 준비 단계는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q28" value="1" class="accent-orange-500"> <span>1. 데이터를 마크다운 표 형식이나 텍스트로 가공하여 프롬프트의 구분 기호 내부에 삽입한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q28" value="2" class="accent-orange-500"> <span>2. 컴퓨터 전원을 끄고 재부팅한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q28" value="3" class="accent-orange-500"> <span>3. 운영체제를 포맷하고 새로 설치한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q28" value="4" class="accent-orange-500"> <span>4. 모니터 해상도를 최대로 낮춘다.</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 텍스트 기반 LLM이 표 데이터를 인식하도록 마크다운 형태로 정돈하여 입력합니다.
+                </div>
+            </div>
+
+            <!-- Q29 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="29" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 29</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">이미지 생성 AI에서 원하지 않는 색상이나 사물이 이미지에 포함되는 것을 막기 위해 활용하는 프롬프트 엔지니어링 기술은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q29" value="1" class="accent-orange-500"> <span>1. 네거티브 프롬프트 (Negative Prompt)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q29" value="2" class="accent-orange-500"> <span>2. 제로샷 프롬프트</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q29" value="3" class="accent-orange-500"> <span>3. 오버피팅 방지법</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q29" value="4" class="accent-orange-500"> <span>4. 양자화 압축</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 네거티브 프롬프트를 통해 제외할 요소를 명시하여 품질을 높입니다.
+                </div>
+            </div>
+
+            <!-- Q30 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="30" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 30</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI를 활용해 파이썬(Python) 자동화 스크립트나 SQL 쿼리를 작성할 때 가장 중요하게 지켜야 할 프롬프트 지시 사항은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q30" value="1" class="accent-orange-500"> <span>1. 사용 중인 데이터베이스 종류, 테이블 구조(스키마), 그리고 원하는 출력 결과 조건을 명확히 전달한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q30" value="2" class="accent-orange-500"> <span>2. "알아서 코드를 짜줘"라고 매우 모호하게 입력한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q30" value="3" class="accent-orange-500"> <span>3. 소스 코드 안에 주민등록번호나 실무 비밀번호를 그대로 노출시킨다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q30" value="4" class="accent-orange-500"> <span>4. 코드를 절대 실행하지 못하도록 텍스트를 암호화한다.</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 정확한 코드 생성을 위해 스키마와 요구 조건을 구체적으로 제공해야 합니다.
+                </div>
+            </div>
+
+            <!-- Q31 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="31" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 31</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">마케팅 문구나 소셜미디어 광고 카피를 생성 AI로 대량 브레인스토밍할 때 가장 유용한 프롬프트 활용 전략은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q31" value="1" class="accent-orange-500"> <span>1. 한 번에 단 하나의 문구만 생성하게 하고 종료한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q31" value="2" class="accent-orange-500"> <span>2. 타깃 고객층, 제품의 차별점, 톤앤매너를 지정하고 서로 다른 컨셉으로 10가지 대안을 표 형식으로 요청한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q31" value="3" class="accent-orange-500"> <span>3. 인공지능에게 질문을 아예 하지 않고 가만히 기다린다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q31" value="4" class="accent-orange-500"> <span>4. 광고 카피 작성법을 전부 숨긴 채 오타 검수만 요구한다.</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 다양한 아이디어를 비교하기 위해 복수의 대안(10가지)과 표 형식을 지정하는 것이 좋습니다.
+                </div>
+            </div>
+
+            <!-- Q32 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="32" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 32</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI를 실무 업무에 도입하여 반복 작업(예: 정기 뉴스레터 작성, 주간 보고서 서식 정리)을 자동화할 때 얻을 수 있는 가장 직접적인 효과는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q32" value="1" class="accent-orange-500"> <span>1. 업무 소요 시간 대폭 단축 및 반복적 행정 업무에 따른 피로도 감소 (생산성 향상)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q32" value="2" class="accent-orange-500"> <span>2. 사내 컴퓨터 하드웨어 수명 단축</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q32" value="3" class="accent-orange-500"> <span>3. 모든 수동 업무의 완전한 폐지</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q32" value="4" class="accent-orange-500"> <span>4. 전 직원 해고</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 반복 업무 자동화를 통해 임직원은 고부가가치 업무에 집중하여 생산성이 향상됩니다.
+                </div>
+            </div>
+
+            <!-- [과목 5] 프롬프트 엔지니어링 업무 활용과 윤리 원칙 (33~40) -->
+            <div class="border-b border-[#EFECE6] pb-4 mb-2 pt-6">
+                <h3 class="text-lg font-bold text-orange-600">[과목 5] 프롬프트 엔지니어링 업무 활용과 윤리 원칙 (문항 33 ~ 40)</h3>
+            </div>
+
+            <!-- Q33 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="33" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 33</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI 활용 시 발생하는 한계점 중, AI가 전혀 사실이 아니거나 존재하지 않는 정보를 마치 진실인 것처럼 그럴싸하게 거짓으로 답변하는 현상은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q33" value="1" class="accent-orange-500"> <span>1. 오버피팅 (Overfitting)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q33" value="2" class="accent-orange-500"> <span>2. 환각 현상 (Hallucination)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q33" value="3" class="accent-orange-500"> <span>3. 편향성 (Bias)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q33" value="4" class="accent-orange-500"> <span>4. 토큰 이탈</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 환각(Hallucination) 현상은 LLM의 고질적 한계로 교차 검증이 필수적입니다.
+                </div>
+            </div>
+
+            <!-- Q34 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="34" data-ans="3">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 34</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">현행 저작권법상 생성 AI가 인간의 구체적인 창작적 개입 없이 순수하게 스스로 단독 생성한 결과물에 대한 저작권 인정 여부는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q34" value="1" class="accent-orange-500"> <span>1. 생성 AI 개발 회사에 자동으로 독점 저작권이 부여된다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q34" value="2" class="accent-orange-500"> <span>2. AI 모델 자체에게 인격권과 저작권이 인정된다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q34" value="3" class="accent-orange-500"> <span>3. 인간의 창작적 기여가 없는 한 원칙적으로 저작권이 인정되지 않는다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q34" value="4" class="accent-orange-500"> <span>4. 해당 결과물을 처음 본 사람에게 저작권이 부여된다.</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 3번. 인간의 개입 없는 순수 AI 단독 결과물은 저작권 보호를 받지 못합니다.
+                </div>
+            </div>
+
+            <!-- Q35 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="35" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 35</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI 학습에 사용된 인터넷상의 기존 텍스트, 이미지 등 데이터와 관련하여 자주 수면 위로 오르는 주된 법적 쟁점은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q35" value="1" class="accent-orange-500"> <span>1. 학습 데이터 무단 수집 및 저작권 침해 우려</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q35" value="2" class="accent-orange-500"> <span>2. 컴퓨터 하드웨어 통신 속도 저하 문제</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q35" value="3" class="accent-orange-500"> <span>3. 모바일 요금제 무제한 가입 권리</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q35" value="4" class="accent-orange-500"> <span>4. 운영체제 무료 업데이트 권리</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 허가 없이 저작물을 수집하여 AI 학습에 사용했는지 여부가 핵심 쟁점입니다.
+                </div>
+            </div>
+
+            <!-- Q36 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="36" data-ans="2">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 36</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI 프롬프트를 작성할 때 기업이나 개인 차원에서 절대 유출되어서는 안 되며 프롬프트 입력창에 넣는 것을 엄격히 금지해야 하는 정보는?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q36" value="1" class="accent-orange-500"> <span>1. 공개된 뉴스 기사의 제목</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q36" value="2" class="accent-orange-500"> <span>2. 기업의 내부 영업 기밀, 미공개 소스 코드, 개인 식별 정보(PII)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q36" value="3" class="accent-orange-500"> <span>3. 위키백과에 수록된 세계 역사적 사실</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q36" value="4" class="accent-orange-500"> <span>4. 파이썬 오픈소스 라이브러리 설명 문서</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 2번. 기업 기밀이나 개인정보 입력은 재학습 및 데이터 유출로 이어질 수 있어 금지됩니다.
+                </div>
+            </div>
+
+            <!-- Q37 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="37" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 37</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">인간이 AI의 최종 판단이나 생성 결과물을 그대로 신뢰하지 않고 검수 및 교정에 직접 참여하는 윤리 및 업무적 방식을 일컫는 표현은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q37" value="1" class="accent-orange-500"> <span>1. Human-in-the-loop (HITL)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q37" value="2" class="accent-orange-500"> <span>2. Full Auto Automation</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q37" value="3" class="accent-orange-500"> <span>3. Zero Human Intervention</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q37" value="4" class="accent-orange-500"> <span>4. Blackbox Process</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 인간 개입(Human-in-the-loop) 과정은 AI의 오류를 방지하기 위한 필수 절차입니다.
+                </div>
+            </div>
+
+            <!-- Q38 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="38" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 38</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">AI가 수집하고 학습한 방대한 빅데이터 내에 성별, 인종, 국적 등에 관한 편견이나 고정관념이 반영되어 왜곡된 결과를 출력하는 현상은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q38" value="1" class="accent-orange-500"> <span>1. 알고리즘 편향성 (Algorithmic Bias)</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q38" value="2" class="accent-orange-500"> <span>2. 데이터 오버클럭</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q38" value="3" class="accent-orange-500"> <span>3. 양자화 오류</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q38" value="4" class="accent-orange-500"> <span>4. 네트워크 지연</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 알고리즘 편향성(Bias)은 사회적 고정관념을 강화할 수 있어 지속적인 교정이 필요합니다.
+                </div>
+            </div>
+
+            <!-- Q39 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="39" data-ans="1">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 39</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">생성 AI가 만든 가짜 영상이나 음성을 활용하여 타인의 명예를 훼손하거나 사기 범죄에 악용하는 합성 기술 범죄 현상은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q39" value="1" class="accent-orange-500"> <span>1. 딥페이크 (Deepfake) 악용</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q39" value="2" class="accent-orange-500"> <span>2. 프롬프트 튜닝</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q39" value="3" class="accent-orange-500"> <span>3. RAG 시스템 구축</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q39" value="4" class="accent-orange-500"> <span>4. 데이터 라벨링</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 1번. 딥페이크 악용은 심각한 사회적 해악을 끼치므로 워터마크 기술 도입 및 규제가 강조됩니다.
+                </div>
+            </div>
+
+            <!-- Q40 -->
+            <div class="bg-white border border-[#EFECE6] rounded-2xl p-6 space-y-3 shadow-sm question-card" data-q="40" data-ans="4">
+                <span class="text-xs font-bold text-[#7A7369] bg-[#F4F1EA] px-2.5 py-1 rounded-md">문항 40</span>
+                <p class="text-sm md:text-base font-semibold text-[#2D2A26]">프롬프트 엔지니어링 및 생성 AI 윤리에 대한 설명으로 가장 올바르지 않은 것은?</p>
+                <div class="space-y-2 text-sm text-[#5C554B] pt-2">
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q40" value="1" class="accent-orange-500"> <span>1. AI 기술의 생산성 이면에는 환각, 저작권, 보안, 편향성 등의 리스크가 공존한다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q40" value="2" class="accent-orange-500"> <span>2. 최종 산출물에 대한 모든 법적·윤리적 책임은 AI 모델 자체가 아니라 이를 활용하고 배포한 인간에게 있다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q40" value="3" class="accent-orange-500"> <span>3. 기업 비밀이나 개인 식별 정보는 절대로 상용 공용 프롬프트에 유출되어서는 안 된다.</span></label>
+                    <label class="flex items-center space-x-3 cursor-pointer"><input type="radio" name="q40" value="4" class="accent-orange-500"> <span>4. AI는 모든 사실을 완벽히 참으로만 출력하므로 인간의 교정 검수(Human-in-the-loop) 과정은 전적으로 불필요하다.</span></label>
+                </div>
+                <div class="explanation hidden mt-4 pt-3 border-t border-[#EFECE6] text-xs text-[#7A7369] bg-[#FAF8F5] p-3 rounded-xl">
+                    <strong>[정답 및 해설]</strong> 정답: 4번. AI는 환각과 오류 가능성이 존재하므로 인간의 검수 과정이 필수적입니다.
+                </div>
+            </div>
+
+            <!-- 하단 제출 버튼 -->
+            <div class="pt-6 text-center">
+                <button type="button" onclick="submitExam()" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3.5 rounded-2xl text-base font-bold transition shadow-md">
+                    답안 제출 및 채점하기
+                </button>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-white border-t border-[#EFECE6] py-8 text-center text-xs text-[#8C857B] space-y-3 shrink-0 mt-12">
+        <div class="flex justify-center space-x-6 font-medium">
+            <a href="index.html" class="hover:text-[#2D2A26]">홈</a>
+            <a href="privacy.html" class="hover:text-[#2D2A26]">개인정보처리방침</a>
+            <a href="terms.html" class="hover:text-[#2D2A26]">이용약관</a>
+        </div>
+        <p>© 2026 AI-POT Study Portal. All rights reserved.</p>
+    </footer>
+
+    <!-- 자바스크립트: 타이머 및 자동 채점 로직 -->
+    <script>
+        // 60분 타이머 구현
+        let timeLeft = 60 * 60;
+        const timerElement = document.getElementById('timer');
+
+        const timerInterval = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert("제한 시간이 종료되었습니다. 자동으로 답안이 제출됩니다.");
+                submitExam();
+                return;
+            }
+            timeLeft--;
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            timerElement.textContent = `잔여 시간: ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }, 1000);
+
+        // 채점 함수
+        function submitExam() {
+            let score = 0;
+            let totalQuestions = 40;
+            let answeredCount = 0;
+
+            const cards = document.querySelectorAll('.question-card');
+            
+            cards.forEach(card => {
+                const qNum = card.getAttribute('data-q');
+                const correctAns = card.getAttribute('data-ans');
+                const radios = card.querySelectorAll(`input[name="q${qNum}"]`);
+                const explanation = card.querySelector('.explanation');
+                
+                // 해설 토글 표시
+                explanation.classList.remove('hidden');
+
+                let selectedVal = null;
+                radios.forEach(r => {
+                    if (r.checked) {
+                        selectedVal = r.value;
+                        answeredCount++;
+                    }
+                });
+
+                // 채점
+                if (selectedVal === correctAns) {
+                    score += (100 / totalQuestions);
+                    card.style.borderColor = '#22c55e'; // 정답 시 초록색 테두리
+                } else {
+                    card.style.borderColor = '#ef4444'; // 오답/미답 시 빨간색 테두리
+                }
+            });
+
+            // 결과 리포트 출력
+            const resultBox = document.getElementById('result-box');
+            const resultContent = document.getElementById('result-content');
+            resultBox.classList.remove('hidden');
+
+            let finalScoreRounded = Math.round(score * 10) / 10;
+            let passStatus = finalScoreRounded >= 70 ? '합격 (PASS)' : '불합격 (FAIL)';
+            let passColor = finalScoreRounded >= 70 ? 'text-green-600 font-extrabold' : 'text-red-600 font-extrabold';
+
+            resultContent.innerHTML = `
+                <p>• <strong>총 응시 문항:</strong> ${totalQuestions}문항 중 ${answeredCount}문항 응시</p>
+                <p>• <strong>최종 획득 점수:</strong> <span class="text-lg font-bold text-orange-600">${finalScoreRounded}점</span> / 100점 만점</p>
+                <p>• <strong>합격 여부:</strong> <span class="${passColor}">${passStatus}</span> (기준: 70점 이상 합격)</p>
+                <p class="text-xs text-[#7A7369] mt-2">각 문항 하단의 <strong>[정답 및 해설]</strong> 영역을 통해 상세 오답 노트를 확인하실 수 있습니다.</p>
+            `;
+
+            // 상단 결과 영역으로 부드럽게 스크롤
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

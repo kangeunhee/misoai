@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2. 생성 AI 기초 이론 핵심요약 & 기출 20제 | AI 프롬프트활용능력 2급</title>
+    <meta name="description" content="AI 프롬프트활용능력 2급 Chapter 2 생성 AI 기초 원리, 확률 모델, LLM 작동 방식, Transformer 구조 및 챗GPT 구조 분석 핵심 요약과 20문항 상세 해설">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap'); body { font-family: 'Pretendard', sans-serif; }</style>
+</head>
+<body class="bg-[#FAF8F5] text-[#2D2A26] min-h-screen flex flex-col antialiased selection:bg-orange-200 selection:text-orange-900">
+
+    <!-- 상단 네비게이션 -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-[#EFECE6] sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2.5">
+                <span class="bg-orange-500 text-white text-xs font-bold px-2.5 py-1 rounded-md shadow-sm">KPC AI-POT</span>
+                <span class="font-bold text-[#2D2A26] text-lg tracking-tight">AI 프롬프트활용능력 2급</span>
+            </a>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-[#6B655D]">
+                <a href="index.html" class="hover:text-orange-600 transition">홈</a>
+                <a href="ch1.html" class="hover:text-orange-600 transition">Ch 1. AI기초</a>
+                <a href="ch2.html" class="text-orange-600 font-bold">Ch 2. 생성AI</a>
+                <a href="ch3.html" class="hover:text-orange-600 transition">Ch 3. 프롬프트기초</a>
+                <a href="ch4.html" class="hover:text-orange-600 transition">Ch 4. 기술활용</a>
+                <a href="ch5.html" class="hover:text-orange-600 transition">Ch 5. 윤리/저작권</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 챕터 2 메인 콘텐츠 -->
+    <main class="max-w-4xl mx-auto px-6 py-10 flex-1 space-y-10">
+        
+        <!-- 챕터 헤더 -->
+        <div class="border-b border-[#EFECE6] pb-6">
+            <span class="text-xs font-bold text-orange-600 bg-orange-50 border border-orange-100 px-3.5 py-1 rounded-full">Chapter 2</span>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-[#2D2A26] mt-3 tracking-tight">생성 AI 기초 이론 (원리 및 챗GPT 구조)</h1>
+            <p class="text-sm text-[#7A7369] mt-1.5">생성 AI의 기초 확률 모델, LLM 작동 방식, Transformer 아키텍처 및 챗GPT 구조 분석 완벽 대비</p>
+        </div>
+
+        <!-- SECTION 1: 핵심 이론 요약 -->
+        <section class="bg-white border border-[#EFECE6] rounded-3xl p-6 md:p-8 space-y-8 shadow-sm">
+            <div class="border-b border-[#EFECE6] pb-4">
+                <h2 class="text-xl font-bold text-[#2D2A26]">Chapter 2 빈출 핵심 이론 요약</h2>
+            </div>
+
+            <div class="space-y-3">
+                <h3 class="text-base font-bold text-orange-600">1. 생성 AI의 기초 원리와 확률 모델</h3>
+                <ul class="text-sm text-[#5C554B] space-y-2 pl-2 leading-relaxed">
+                    <li>• <strong>확률적 토큰 예측:</strong> 생성 AI와 LLM은 입력된 텍스트 문맥을 분석하여 다음에 올 확률이 가장 높은 토큰(Token)을 연속적으로 예측해 문장을 생성합니다.</li>
+                    <li>• <strong>온도(Temperature) 파라미터:</strong> 무작위성과 창의성을 조절하는 값으로, 값이 높을수록 다양한 표현이 생성되고 낮을수록 일관되고 결정론적인 답변이 나옵니다.</li>
+                    <li>• <strong>비결정론적 특성:</strong> 확률적 샘플링에 기반하므로 동일한 프롬프트를 입력하더라도 매번 완전히 동일한 결과물이 출력되지 않을 수 있습니다.</li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h3 class="text-base font-bold text-orange-600">2. LLM 필수 요소 및 챗GPT(Transformer) 구조 분석</h3>
+                <ul class="text-sm text-[#5C554B] space-y-2 pl-2 leading-relaxed">
+                    <li>• <strong>Transformer 아키텍처:</strong> 2017년 제안된 구조로, 순환 신경망(RNN)의 한계를 극복하고 어텐션(Attention) 메커니즘을 통해 단어 간 연관성을 병렬로 동시 처리합니다.</li>
+                    <li>• <strong>사전 학습(Pre-training):</strong> 대규모 비정형 텍스트 데이터를 통해 언어의 구조와 문법, 일반 지식을 비지도 방식으로 학습하는 단계입니다.</li>
+                    <li>• <strong>미세 조정(Fine-tuning) 및 RLHF:</strong> 인간의 피드백을 통한 강화 학습(RLHF)을 거쳐 모델이 안전하고 유용한 대화형 응답(ChatGPT 형태)을 하도록 최적화합니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 실전 기출 예상 문제 20문항 -->
+   <section class="space-y-6">
+            <div class="flex items-center justify-between border-b border-[#EFECE6] pb-3">
+                <h2 class="text-xl font-bold text-[#2D2A26]">Chapter 2 실전 기출 예상 문제 (20문항)</h2>
+                <a href="ch1_cbt.html" class="text-xs bg-orange-500 hover:bg-orange-600 text-white font-bold px-3.5 py-2 rounded-xl transition shadow-sm">실전 CBT 모의고사로 풀기</a>
+            </div>
+
+            <!-- Q1 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 01</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">대규모 언어 모델(LLM) 및 생성 AI가 텍스트를 생성할 때 바탕이 되는 가장 근본적인 수학적·통계적 작동 원리로 가장 적절한 것은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>데이터베이스에 저장된 문장을 키워드 매칭으로 검색하여 그대로 복사한다.</li>
+                    <li>입력된 텍스트 문맥을 분석하여 다음에 올 가장 확률이 높은 토큰을 연속적으로 예측한다.</li>
+                    <li>이진 논리 회로를 기반으로 입력문의 참과 거짓을 완벽하게 판정하여 출력한다.</li>
+                    <li>모든 문장의 길이를 고정된 바이트 벡터로 변환하여 기계적으로 결합한다.</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        생성 AI와 LLM은 확률 모델에 기반하여 입력된 텍스트 문맥에서 다음에 올 확률이 가장 높은 토큰(Token)을 연속적으로 예측하여 문장을 완성합니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q2 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 02</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">생성 AI 모델의 파라미터 중, 출력 결과의 무작위성 및 창의성 수치를 조절하여 답변의 다양성을 제어하는 옵션의 명칭은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>온도 (Temperature)</li>
+                    <li>학습률 (Learning Rate)</li>
+                    <li>에포크 (Epoch)</li>
+                    <li>배치 사이즈 (Batch Size)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        Temperature(온도) 값이 높을수록 확률 분포가 완만해져 다양하고 창의적인 답변이 나오며, 낮을수록 일관되고 결정론적인 답변이 출력됩니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q3 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 03</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">챗GPT(ChatGPT) 등 현대 대규모 언어 모델의 근간이 되는 딥러닝 아키텍처로서, 순차적 처리의 한계를 극복하고 병렬 연산을 극대화한 구조는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>CNN (합성곱 신경망)</li>
+                    <li>RNN (순환 신경망)</li>
+                    <li>Transformer (트랜스포머 아키텍처)</li>
+                    <li>퍼셉트론 단층망</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 3번</strong><br>
+                        ChatGPT를 비롯한 주요 생성 AI는 어텐션 메커니즘을 기반으로 한 Transformer 아키텍처를 핵심 뼈대로 사용합니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q4 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 04</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">다음 중 가중치와 모델 구조가 외부에 공개되어 누구나 다운로드하여 커스텀 학습 및 활용이 가능한 오픈 웨이트(Open-weights) 계열의 LLM에 해당하는 것은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>OpenAI GPT-4o</li>
+                    <li>Google Gemini</li>
+                    <li>Anthropic Claude</li>
+                    <li>Meta Llama 시리즈</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 4번</strong><br>
+                        Meta의 Llama 시리즈는 소스 코드와 가중치가 공개된 대표적인 오픈소스(오픈 웨이트) 대규모 언어 모델입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q5 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 05</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">자연어 처리(NLP) 기술 중, 컴퓨터가 인간의 언어를 읽고 그 의미를 파악하고 분석하는 영역을 뜻하는 용어로 올바른 것은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>NLG (Natural Language Generation)</li>
+                    <li>NLU (Natural Language Understanding)</li>
+                    <li>OCR (Optical Character Recognition)</li>
+                    <li>STT (Speech-to-Text)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        자연어 처리는 크게 언어를 이해하는 NLU(Natural Language Understanding)와 언어를 생성하는 NLG(Natural Language Generation)로 나뉩니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q6 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 06</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">트랜스포머(Transformer) 아키텍처의 핵심 메커니즘으로, 문장 안의 단어들이 서로 간에 얼마나 밀접한 연관성이 있는지를 계산하여 문맥 파악 능력을 높여주는 기술은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>컨볼루션 필터 (Convolution Filter)</li>
+                    <li>어텐션 메커니즘 (Attention Mechanism)</li>
+                    <li>드롭아웃 (Dropout)</li>
+                    <li>풀링 (Pooling)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        어텐션(Attention) 기법은 문장 내에서 멀리 떨어져 있는 단어들 간의 관계와 연관성을 동시에 계산하여 문맥을 정확히 파악할 수 있게 해줍니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q7 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 07</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">대규모 언어 모델을 구축할 때, 방대한 비정형 텍스트 데이터를 활용하여 언어의 기본적인 구조와 문법, 세상의 지식을 비지도 방식으로 학습하는 초기 단계는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>사전 학습 (Pre-training)</li>
+                    <li>미세 조정 (Fine-tuning)</li>
+                    <li>강화 학습 (RLHF)</li>
+                    <li>프롬프트 엔지니어링</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        사전 학습(Pre-training) 단계에서는 막대한 데이터로 언어의 기반 지식을 먼저 익히며, 이후 목적에 맞게 세부 조정을 거칩니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q8 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 08</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">사전 학습된 모델에 특정 도메인 데이터나 목적에 맞는 데이터를 추가로 학습시켜 성능을 최적화하는 과정을 뜻하는 용어는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>제로샷 러닝</li>
+                    <li>미세 조정 (Fine-tuning)</li>
+                    <li>토큰화 (Tokenization)</li>
+                    <li>양자화 (Quantization)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        미세 조정(Fine-tuning)은 범용적으로 학습된 모델을 특정 목적이나 업무 분야에 특화되도록 추가 학습시키는 과정입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q9 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 09</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">생성 AI 모델이 텍스트를 처리할 때 문장을 일정한 의미 단위나 형태소, 혹은 글자 조각으로 쪼개는 전처리 단계를 가리키는 용어는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>벡터화 (Vectorization)</li>
+                    <li>토큰화 (Tokenization)</li>
+                    <li>임베딩 (Embedding)</li>
+                    <li>정규화 (Normalization)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        토큰화(Tokenization)는 입력된 텍스트를 모델이 인식할 수 있는 조각(토큰) 단위로 분해하는 필수 전처리 과정입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q10 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 10</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">토큰화된 단어나 문장 조각을 컴퓨터가 이해할 수 있는 고차원의 숫자 배열 형태인 연속적 벡터 공간으로 변환하는 기술은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>토큰 바인딩</li>
+                    <li>단어 임베딩 (Word Embedding)</li>
+                    <li>역전파 연산</li>
+                    <li>디코딩 매핑</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        단어 임베딩(Word Embedding)은 단어의 의미적 유사성을 다차원 공간 상의 수치 벡터로 표현하여 모델이 연산할 수 있게 합니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q11 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 11</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">챗GPT와 같은 대화형 AI가 인간의 선호도와 윤리적 기준에 부합하도록 피드백을 반영하여 최적화하는 학습 기법의 영문 약어는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>RAG</li>
+                    <li>RLHF</li>
+                    <li>CNN</li>
+                    <li>API</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        RLHF(Reinforcement Learning from Human Feedback)는 인간의 피드백을 기반으로 한 강화 학습 기법으로 대화형 AI의 안전성과 유용성을 높입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q12 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 12</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">대규모 언어 모델의 구조 중, 입력된 프롬프트를 받아들여 문맥을 이해하고 분석하는 역할을 담당하는 주된 파트를 뜻하는 용어는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>디코더 (Decoder)</li>
+                    <li>인코더 (Encoder)</li>
+                    <li>컨버터 (Converter)</li>
+                    <li>스캐너 (Scanner)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        트랜스포머 구조에서 인코더(Encoder)는 입력 데이터를 분석하고 이해하는 역할을 주로 담당합니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q13 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 13</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">트랜스포머 아키텍처 중에서 텍스트 생성과 자가 회귀(Autoregressive) 방식으로 다음 토큰을 예측하는 데 특화된 구조는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>인코더 전용 모델</li>
+                    <li>디코더 전용 모델 (Decoder-only)</li>
+                    <li>순환 신경망 모델</li>
+                    <li>합성곱 분류 모델</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        GPT 시리즈와 같은 대다수의 현대 LLM은 디코더 전용(Decoder-only) 구조를 채택하여 텍스트 생성에 최적화되어 있습니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q14 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 14</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">생성 AI 모델이 한 번에 처리할 수 있는 최대 입력 및 출력 토큰의 총량을 의미하는 전문 용어는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>컨텍스트 윈도우 (Context Window)</li>
+                    <li>토큰 레이턴시</li>
+                    <li>메모리 버퍼 사이즈</li>
+                    <li>가중치 풀 (Weight Pool)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        컨텍스트 윈도우(Context Window)는 모델이 한 번에 기억하고 처리할 수 있는 대화 및 문서의 최대 토큰 범위를 뜻합니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q15 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 15</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">생성 AI의 확률적 생성 특성으로 인해, 동일한 입력(프롬프트)을 넣더라도 매번 답변의 표현이나 단어 선택이 달라지는 성질을 일컫는 말은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>결정론적 고정성</li>
+                    <li>비결정론적 성질 (Non-deterministic)</li>
+                    <li>선형적 수렴성</li>
+                    <li>정적 불변성</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        생성 AI는 확률 분포에 기반하여 샘플링하므로 매번 실행할 때마다 결과가 달라지는 비결정론적 특성을 가집니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q16 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 16</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">생성 AI 모델이 학습 데이터에 지나치게 밀착되어 새로운 데이터나 응용 상황에 대한 유연한 대처 능력이 떨어지는 현상은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>환각 현상 (Hallucination)</li>
+                    <li>오버피팅 (Overfitting)</li>
+                    <li>그래디언트 소실</li>
+                    <li>토큰 오버플로우</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        오버피팅(Overfitting, 과적합)은 모델이 학습 데이터에만 과도하게 맞춰져 일반적인 성능이 저하되는 현상입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q17 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 17</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">생성 AI 모델의 출력 속도를 높이거나 메모리 사용량을 줄이기 위해 32비트 부동소수점 가중치를 낮은 비트(예: 8비트, 4비트)로 압축하는 기법은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>양자화 (Quantization)</li>
+                    <li>토큰화 (Tokenization)</li>
+                    <li>파인튜닝 (Fine-tuning)</li>
+                    <li>인코딩 (Encoding)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        양자화(Quantization)는 모델의 가중치 정밀도를 낮추어 파일 크기를 줄이고 연산 속도를 가속화하는 기술입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q18 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 18</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">대규모 언어 모델이 출력할 수 있는 다음 토큰들의 후보 중에서 확률이 너무 낮은 단어들을 배제하기 위해 상위 몇 개만 남기는 샘플링 제어 파라미터는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>Top-K / Top-P (Nucleus) 샘플링</li>
+                    <li>Learning Rate Decay</li>
+                    <li>Batch Normalization</li>
+                    <li>Dropout Rate</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        Top-K와 Top-P 샘플링은 무작위 토큰 출력을 억제하고 자연스러운 문장이 생성되도록 확률 상위 항목만 필터링하는 파라미터입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q19 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 19</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">생성 AI가 답변을 생성할 때 문맥의 흐름을 유지하기 위해 이전의 대화 내용 전체를 다시 입력으로 밀어 넣어 함께 처리하는 방식을 뜻하는 특징은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>상태 유지형 대화 (Stateful / Stateless Context Handling)</li>
+                    <li>단발성 일회용 쿼리</li>
+                    <li>하드코딩 규칙 기반 분기</li>
+                    <li>관계형 데이터베이스 조인</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        LLM은 기본적으로 이전 대화 기록을 프롬프트와 함께 누적하여 입력함으로써 문맥(Context)을 유지하며 대화를 이어갑니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q20 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 20</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">다음 중 대규모 언어 모델(LLM)의 구조 및 작동 원리에 대한 설명으로 가장 적절하지 않은 것은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>입력된 텍스트를 토큰 단위로 쪼갠 후 임베딩 과정을 거쳐 모델 내부로 전달한다.</li>
+                    <li>트랜스포머의 어텐션 메커니즘을 통해 문장 전체의 단어 간 연관성을 병렬로 계산한다.</li>
+                    <li>사전 학습이 완료된 모델은 추가 학습 없이 모든 최신 정보와 실시간 뉴스를 완벽하게 내재하고 있다.</li>
+                    <li>확률 모델을 기반으로 작동하므로 온도 값 조절을 통해 답변의 창의성을 제어할 수 있다.</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 3번</strong><br>
+                        사전 학습된 LLM은 학습 시점까지의 데이터만 보유하므로, 최신 정보나 실시간 뉴스를 반영하려면 RAG(검색 증강 생성)나 웹 검색 연동 등의 추가 기술이 필요합니다.
+                    </div>
+                </details>
+            </article>
+
+        </section>
+
+        <!-- 이전/다음 챕터 이동 버튼 -->
+        <div class="flex justify-between items-center pt-6 border-t border-[#EFECE6]">
+            <a href="ch1.html" class="bg-white hover:bg-[#F4F1EA] border border-[#EFECE6] text-[#2D2A26] px-5 py-2.5 rounded-xl text-sm font-medium transition shadow-sm">Chapter 1 로</a>
+            <a href="ch3.html" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-xl text-sm font-semibold transition shadow-sm">Chapter 3 공부하기</a>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-white border-t border-[#EFECE6] py-8 text-center text-xs text-[#8C857B] space-y-3 shrink-0 mt-12">
+        <div class="flex justify-center space-x-6 font-medium">
+            <a href="index.html" class="hover:text-[#2D2A26]">홈</a>
+            <a href="privacy.html" class="hover:text-[#2D2A26]">개인정보처리방침</a>
+            <a href="terms.html" class="hover:text-[#2D2A26]">이용약관</a>
+        </div>
+        <p>© 2026 AI-POT Study Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

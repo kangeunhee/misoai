@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1. 인공지능 기초 이론 핵심요약 & 기출 20제 | AI 프롬프트활용능력 2급</title>
+    <meta name="description" content="AI 프롬프트활용능력 2급 Chapter 1 인공지능의 역사, 머신러닝 알고리즘, 정밀도 및 재현율 성능 평가 지표 출제 핵심 이론 요약과 20문항 상세 해설">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap'); body { font-family: 'Pretendard', sans-serif; }</style>
+</head>
+<body class="bg-[#FAF8F5] text-[#2D2A26] min-h-screen flex flex-col antialiased selection:bg-orange-200 selection:text-orange-900">
+
+    <!-- 상단 네비게이션 -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-[#EFECE6] sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2.5">
+                <span class="bg-orange-500 text-white text-xs font-bold px-2.5 py-1 rounded-md shadow-sm">KPC AI-POT</span>
+                <span class="font-bold text-[#2D2A26] text-lg tracking-tight">AI 프롬프트활용능력 2급</span>
+            </a>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-[#6B655D]">
+                <a href="index.html" class="hover:text-orange-600 transition">홈</a>
+                <a href="ch1.html" class="text-orange-600 font-bold">Ch 1. AI기초</a>
+                <a href="ch2.html" class="hover:text-orange-600 transition">Ch 2. 생성AI</a>
+                <a href="ch3.html" class="hover:text-orange-600 transition">Ch 3. 프롬프트기초</a>
+                <a href="ch4.html" class="hover:text-orange-600 transition">Ch 4. 기술활용</a>
+                <a href="ch5.html" class="hover:text-orange-600 transition">Ch 5. 윤리/저작권</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 챕터 1 메인 콘텐츠 -->
+    <main class="max-w-4xl mx-auto px-6 py-10 flex-1 space-y-10">
+        
+        <!-- 챕터 헤더 -->
+        <div class="border-b border-[#EFECE6] pb-6">
+            <span class="text-xs font-bold text-orange-600 bg-orange-50 border border-orange-100 px-3.5 py-1 rounded-full">Chapter 1</span>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-[#2D2A26] mt-3 tracking-tight">인공지능 기초 이론 (핵심 요약 & 기출 20제)</h1>
+            <p class="text-sm text-[#7A7369] mt-1.5">인공지능의 변천사, 머신러닝/딥러닝 알고리즘 및 성능 평가 지표(정밀도, 재현율, F1 스코어) 완벽 대비</p>
+        </div>
+
+        <!-- SECTION 1: 시험에 잘 나오는 핵심 이론 요약 -->
+        <section class="bg-white border border-[#EFECE6] rounded-3xl p-6 md:p-8 space-y-8 shadow-sm">
+            <div class="border-b border-[#EFECE6] pb-4">
+                <h2 class="text-xl font-bold text-[#2D2A26]">Chapter 1 빈출 핵심 이론 요약</h2>
+            </div>
+
+            <div class="space-y-3">
+                <h3 class="text-base font-bold text-orange-600">1. 인공지능의 역사와 핵심 개념</h3>
+                <ul class="text-sm text-[#5C554B] space-y-2 pl-2 leading-relaxed">
+                    <li>• <strong>다트머스 회의 (1956년):</strong> 존 매카시, 마빈 민스키 등이 모여 '인공지능(Artificial Intelligence)'이라는 용어를 세계 최초로 공식 사용하였습니다.</li>
+                    <li>• <strong>AI 윈터 (AI Winter):</strong> 연산 능력의 한계와 기대치 미달로 연구 투자 지원이 급감했던 기술 침체기를 뜻합니다.</li>
+                    <li>• <strong>AI ⊃ 머신러닝 ⊃ 딥러닝:</strong> 인공지능이 가장 큰 범주이며, 데이터를 통해 스스로 학습하는 머신러닝, 다층 신경망 기반의 딥러닝 순으로 포괄 관계를 형성합니다.</li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h3 class="text-base font-bold text-orange-600">2. 머신러닝 3대 학습 유형과 주요 알고리즘</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-[#FAF8F5] p-4 rounded-2xl border border-[#EFECE6]">
+                        <span class="font-bold text-[#2D2A26] block text-sm mb-1">지도 학습 (Supervised)</span>
+                        <p class="text-[#7A7369] mb-2">정답(Label)이 주어진 상태에서 학습하여 예측/분류</p>
+                        <p class="font-semibold text-orange-600">선형회귀, 로지스틱회귀, 의사결정나무, SVM</p>
+                    </div>
+                    <div class="bg-[#FAF8F5] p-4 rounded-2xl border border-[#EFECE6]">
+                        <span class="font-bold text-[#2D2A26] block text-sm mb-1">비지도 학습 (Unsupervised)</span>
+                        <p class="text-[#7A7369] mb-2">정답 없이 데이터의 유사성이나 숨겨진 패턴 군집화</p>
+                        <p class="font-semibold text-orange-600">K-평균 군집화(K-Means), PCA(차원축소)</p>
+                    </div>
+                    <div class="bg-[#FAF8F5] p-4 rounded-2xl border border-[#EFECE6]">
+                        <span class="font-bold text-[#2D2A26] block text-sm mb-1">강화 학습 (Reinforcement)</span>
+                        <p class="text-[#7A7369] mb-2">에이전트가 환경과 상호작용하며 보상 최대화</p>
+                        <p class="font-semibold text-orange-600">보상(Reward), 에이전트, 시행착오 정책</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <h3 class="text-base font-bold text-orange-600">3. 혼동 행렬과 성능 평가 지표</h3>
+                <div class="bg-[#FAF8F5] p-4 rounded-2xl border border-[#EFECE6] text-xs space-y-2 text-[#5C554B]">
+                    <p>• <strong>정밀도 (Precision):</strong> AI가 참이라고 예측한 것 중 실제로 참인 비율 (예: 스팸 메일 차단 등 오탐 방지가 중요한 경우)</p>
+                    <p>• <strong>재현율 (Recall):</strong> 실제 참인 것 중 AI가 올바르게 찾아낸 비율 (예: 암 진단, 테러범 검출 등 미탐 방지가 중요한 경우)</p>
+                    <p>• <strong>F1 스코어 (F1 Score):</strong> 정밀도와 재현율의 <strong>조화 평균</strong> 지표로, 불균형 데이터셋 평가 시 필수 활용</p>
+                    <p>• <strong>정확도 (Accuracy):</strong> 전체 데이터 중 올바르게 맞힌 비율이나, 불균형 데이터셋에서는 착시를 유발할 수 있음</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 실전 기출 예상 문제 20문항 -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between border-b border-[#EFECE6] pb-3">
+                <h2 class="text-xl font-bold text-[#2D2A26]">Chapter 1 실전 기출 예상 문제 (20문항)</h2>
+                <a href="ch1_cbt.html" class="text-xs bg-orange-500 hover:bg-orange-600 text-white font-bold px-3.5 py-2 rounded-xl transition shadow-sm">실전 CBT 모의고사로 풀기</a>
+            </div>
+
+            <!-- Q1 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 01</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">인공지능(AI)이라는 용어가 역사상 처음으로 공식 제안된 1956년 다트머스 회의(Dartmouth Workshop)를 주도한 주요 학자에 속하지 않는 사람은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>존 매카시 (John McCarthy)</li>
+                    <li>마빈 민스키 (Marvin Minsky)</li>
+                    <li>앨런 튜링 (Alan Turing)</li>
+                    <li>클로드 샤논 (Claude Shannon)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 3번</strong><br>
+                        앨런 튜링은 1950년에 '튜링 테스트'를 제안했으나, 1956년 다트머스 회의를 주도하고 '인공지능'이라는 용어를 공식화한 학자들은 존 매카시, 마빈 민스키, 클로드 샤논 등입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q2 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 02</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">1970년대와 1980년대 초반, 초기 인공지능 연구가 한계에 부딪혀 정부 지원과 연구 투자가 급감하며 침체기를 맞았던 현상을 가리키는 용어는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>AI 블랭크 아웃</li>
+                    <li>AI 윈터 (AI Winter)</li>
+                    <li>뉴럴 프리즈</li>
+                    <li>컴퓨팅 다크에이지</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        컴퓨터의 연산 능력 한계와 데이터 부족으로 인공지능 연구에 혹한기가 찾아왔던 시기를 'AI 윈터(인공지능의 겨울)'라고 부릅니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q3 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 03</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">머신러닝 학습 방식 중, 입력 데이터에 대한 정답(Label)이 함께 제공되며 오차를 줄여나가는 학습 유형은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>비지도 학습 (Unsupervised Learning)</li>
+                    <li>지도 학습 (Supervised Learning)</li>
+                    <li>강화 학습 (Reinforcement Learning)</li>
+                    <li>자기 지도 학습</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        정답(Label)을 미리 알려주고 학습시키는 방식을 지도 학습(Supervised Learning)이라고 합니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q4 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 04</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">다음 중 지도 학습(Supervised Learning) 모델로 분류할 수 없는 알고리즘은 무엇인가?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>K-평균 군집화 (K-Means Clustering)</li>
+                    <li>선형 회귀 (Linear Regression)</li>
+                    <li>의사결정 나무 (Decision Tree)</li>
+                    <li>랜덤 포레스트 (Random Forest)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        K-평균 군집화는 정답 레이블이 없는 상태에서 유사성을 기반으로 무리지어 주는 대표적인 비지도 학습 알고리즘입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q5 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 05</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">강화 학습(Reinforcement Learning)에서 에이전트가 더 나은 행동을 선택하도록 주어지는 피드백 수치는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>가중치 (Weight)</li>
+                    <li>편향 (Bias)</li>
+                    <li>보상 (Reward)</li>
+                    <li>손실 (Loss)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 3번</strong><br>
+                        강화 학습은 행동에 따른 보상(Reward)을 최대화하는 방향으로 정책을 학습합니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q6 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 06</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">프랑크 로젠블랫이 고안한 인공신경망의 기초 형태로서, 입력을 받아 임계값에 따라 출력을 결정하는 단층 구조는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>퍼셉트론 (Perceptron)</li>
+                    <li>서포트 벡터 머신 (SVM)</li>
+                    <li>로지스틱 회귀</li>
+                    <li>마르코프 체인</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        인공신경망의 조상 격이자 딥러닝의 기본 단위가 되는 모델은 퍼셉트론(Perceptron)입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q7 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 07</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">다음 중 머신러닝 알고리즘 중 '분류'와 '회귀' 문제를 모두 해결할 수 있는 지도 학습 모델로 널리 쓰이는 것은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>K-평균 군집화 (K-Means)</li>
+                    <li>주성분 분석 (PCA)</li>
+                    <li>서포트 벡터 머신 (SVM)</li>
+                    <li>연관 규칙 학습</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 3번</strong><br>
+                        서포트 벡터 머신(SVM)은 초평면을 찾아 데이터를 분류하거나 연속적인 값을 예측하는 회귀 작업에 모두 활용될 수 있습니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q8 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 08</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">다음 중 비지도 학습(Unsupervised Learning) 알고리즘의 주요 목적으로 가장 거리가 먼 것은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>군집화 (Clustering)</li>
+                    <li>차원 축소 (Dimensionality Reduction)</li>
+                    <li>데이터의 특징 추출 및 연관 규칙 발견</li>
+                    <li>정답 레이블을 이용한 오차 역전파 최적화</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 4번</strong><br>
+                        정답 레이블을 이용해 오차를 줄이는 과정은 지도 학습(Supervised Learning)의 고유 특징입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q9 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 09</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">인공지능 역사상 단층 퍼셉트론의 비선형 문제 한계(XOR 문제)를 수학적으로 증명하여 첫 번째 AI 윈터를 촉발시킨 학자는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>존 매카시와 클로드 샤논</li>
+                    <li>마빈 민스키와 시모어 페퍼트</li>
+                    <li>제프리 힌턴과 야님 르쿤</li>
+                    <li>요슈아 벤지오와 앤드류 응</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        마빈 민스키와 시모어 페퍼트는 1969년 저서 《퍼셉트론》을 통해 단층 퍼셉트론의 한계를 지적하며 침체기(AI Winter)를 불러왔습니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q10 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 10</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">다층 신경망에서 은닉층이 깊어질 때, 입력층 쪽으로 갈수록 기울기가 소실되어 가중치 학습이 이루어지지 않는 현상은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>오버피팅 (Overfitting)</li>
+                    <li>기울기 소실 (Gradient Vanishing)</li>
+                    <li>언더피팅 (Underfitting)</li>
+                    <li>토큰 이탈 (Token Overflow)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        역전파 과정에서 미분값이 연속으로 곱해지며 앞쪽 층의 기울기가 0에 수렴하는 현상을 기울기 소실(Gradient Vanishing)이라고 합니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q11 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 11</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">혼동 행렬(Confusion Matrix)에서 '실제 값은 참인데 모델이 거짓이라고 잘못 예측한 경우'를 가리키는 지표는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>TP (True Positive)</li>
+                    <li>FP (False Positive)</li>
+                    <li>TN (True Negative)</li>
+                    <li>FN (False Negative)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 4번</strong><br>
+                        실제 참인 것을 거짓으로 놓친 경우는 FN(False Negative, 미견출 또는 제2종 오류)입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q12 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 12</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">통계적 가설 검정의 제1종 오류에 대응하며, '실제는 거짓인데 모델이 참이라고 잘못 판정하는 경우'를 뜻하는 지표는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>FP (False Positive)</li>
+                    <li>FN (False Negative)</li>
+                    <li>TN (True Negative)</li>
+                    <li>TP (True Positive)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        실제 음성을 양성으로 잘못 예측한 위양성(False Positive, FP) 오류가 통계학의 제1종 오류에 해당합니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q13 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 13</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">다음 중 정밀도(Precision)의 올바른 수학적 계산 공식을 가장 잘 설명한 것은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>TP / (TP + FN)</li>
+                    <li>TP / (TP + FP)</li>
+                    <li>(TP + TN) / 전체</li>
+                    <li>TN / (TN + FP)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        정밀도는 모델이 참이라고 예측한 전체 대상(TP + FP) 중 실제로 참인 것(TP)의 비율입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q14 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 14</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">다음 중 재현율(Recall, 민감도)의 올바른 수학적 계산 공식을 가장 잘 설명한 것은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>TP / (TP + FN)</li>
+                    <li>TP / (TP + FP)</li>
+                    <li>(TP + TN) / 전체</li>
+                    <li>FP / (TP + FP)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        재현율은 실제 참인 전체 데이터(TP + FN) 중 모델이 참이라고 올바르게 찾아낸 것(TP)의 비율입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q15 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 15</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">공항 검색대에서 실제 테러범을 놓치지 않고 최대한 다 잡아내는 것이 중요한 시나리오일 때 중점적으로 봐야 할 지표는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>정밀도 (Precision)</li>
+                    <li>재현율 (Recall)</li>
+                    <li>특이도 (Specificity)</li>
+                    <li>오분류율</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        실제 테러범(양성)을 놓치는 제2종 오류(FN)를 줄여야 하므로, 실제 참 중에서 찾아낸 비율인 재현율을 높여야 합니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q16 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 16</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">스팸 메일 차단 모델에서 일반 메일을 스팸으로 오인하여 차단하는 피해를 최소화하는 데 집중할 때 눈여겨봐야 할 지표는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>재현율 (Recall)</li>
+                    <li>정밀도 (Precision)</li>
+                    <li>정확도 (Accuracy)</li>
+                    <li>손실 함수 값</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 2번</strong><br>
+                        스팸이라고 판정(Positive)한 것 중 실제 스팸의 비율인 정밀도(Precision)가 높아야 일반 메일이 스팸함으로 잘못 들어가는 오탐을 줄일 수 있습니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q17 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 17</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">정밀도와 재현율의 상호 절충(Trade-off) 관계를 극복하기 위해 두 지표의 조화 평균을 구하는 지표는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>F1 스코어 (F1 Score)</li>
+                    <li>MSE (평균 제곱 오차)</li>
+                    <li>AUC-ROC</li>
+                    <li>크로스 엔트로피</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        F1 Score는 정밀도와 재현율의 조화 평균으로, 두 지표가 모두 우수할 때 높은 값을 가집니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q18 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 18</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">전체 데이터 중 올바르게 예측한 비율이지만 불균형 데이터셋에서는 성능을 왜곡할 위험이 큰 평가지표는?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>F1 스코어</li>
+                    <li>재현율</li>
+                    <li>정확도 (Accuracy)</li>
+                    <li>정밀도</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 3번</strong><br>
+                        정확도(Accuracy)는 클래스 불균형이 극심한 경우 모델의 실효성을 제대로 반영하지 못하는 한계가 있습니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q19 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 19</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">이진 분류 모델의 임계값 변화에 따른 성능을 시각화하기 위해 X축에 위양성률, Y축에 진짜양성률을 놓아 그린 곡선은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>ROC 곡선 (ROC Curve)</li>
+                    <li>로스 곡선</li>
+                    <li>정규 분포 곡선</li>
+                    <li>학습 곡선</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        ROC 곡선과 그 아래 면적(AUC)은 분류 모델의 예측 성능을 종합적으로 평가하는 대표적인 지표입니다.
+                    </div>
+                </details>
+            </article>
+
+            <!-- Q20 -->
+            <article class="bg-white border border-[#EFECE6] rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-orange-600 bg-[#F4F1EA] px-3 py-1 rounded-md">문항 20</span>
+                <h3 class="text-base font-semibold text-[#2D2A26] leading-relaxed">다중 클래스 분류 문제에서 각 클래스별 성능 평가를 동일한 비중으로 단순 평균하여 계산하는 방식은?</h3>
+                <ol class="list-decimal list-inside text-sm text-[#5C554B] space-y-2 pl-1">
+                    <li>매크로 평균 (Macro Average)</li>
+                    <li>마이크로 평균 (Micro Average)</li>
+                    <li>가중 평균 (Weighted Average)</li>
+                    <li>조화 평균 (Harmonic Average)</li>
+                </ol>
+                <details class="text-xs text-[#7A7369] bg-[#FAF8F5] p-4 rounded-xl border border-[#EFECE6]">
+                    <summary class="cursor-pointer font-bold text-[#2D2A26] hover:text-orange-600 transition">정답 및 상세 해설 보기</summary>
+                    <div class="mt-3 text-[#5C554B] leading-relaxed">
+                        <strong>정답: 1번</strong><br>
+                        매크로 평균(Macro Average)은 각 클래스의 성능을 동일한 비중으로 계산하여 단순 평균을 구하는 방식입니다.
+                    </div>
+                </details>
+            </article>
+
+        </section>
+
+        <!-- 이전/다음 챕터 이동 버튼 -->
+        <div class="flex justify-between items-center pt-6 border-t border-[#EFECE6]">
+            <a href="index.html" class="bg-white hover:bg-[#F4F1EA] border border-[#EFECE6] text-[#2D2A26] px-5 py-2.5 rounded-xl text-sm font-medium transition shadow-sm">메인 홈</a>
+            <a href="ch2.html" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-xl text-sm font-semibold transition shadow-sm">Chapter 2 공부하기</a>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-white border-t border-[#EFECE6] py-8 text-center text-xs text-[#8C857B] space-y-3 shrink-0 mt-12">
+        <div class="flex justify-center space-x-6 font-medium">
+            <a href="index.html" class="hover:text-[#2D2A26]">홈</a>
+            <a href="privacy.html" class="hover:text-[#2D2A26]">개인정보처리방침</a>
+            <a href="terms.html" class="hover:text-[#2D2A26]">이용약관</a>
+        </div>
+        <p>© 2026 AI-POT Study Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>
